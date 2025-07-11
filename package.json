@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/serve.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,12 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.11",
+    "@types/sequelize": "^4.28.20",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^10.1.5",
+    "prettier": "^3.6.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   },
@@ -20,6 +26,9 @@
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
-    "mysql2": "^3.14.1"
+    "mysql2": "^3.14.1",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
   }
 }
