@@ -1,4 +1,6 @@
-export function validatePartialProductData(data: any) {
+import { ProductType } from '../utils/dateFormatter';
+
+export function validatePartialProductData(data: ProductType) {
   const errors: string[] = [];
 
   if ('name' in data && typeof data.name !== 'string') {

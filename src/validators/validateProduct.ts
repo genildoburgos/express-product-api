@@ -1,4 +1,6 @@
-export function validateProductData(data: any) {
+import { ProductType } from '../utils/dateFormatter';
+
+export function validateProductData(data: ProductType) {
   const errors: string[] = [];
 
   if (typeof data.name !== 'string') {

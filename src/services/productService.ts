@@ -1,10 +1,10 @@
 import Product from '../models/productModel';
 import { AppError } from '../errors/appError';
-import { formatDate } from '../utils/dateFormatter';
+import { formatDate, ProductType } from '../utils/dateFormatter';
 import { validateProductData } from '../validators/validateProduct';
 import { validatePartialProductData } from '../validators/validatePartialProduct';
 
-export const createProduct = async (data: any) => {
+export const createProduct = async (data: ProductType) => {
   const validationErrors = validateProductData(data);
   if (validationErrors.length > 0) {
     throw new AppError(validationErrors, 400);
@@ -15,7 +15,7 @@ export const createProduct = async (data: any) => {
     throw new AppError(['name already registered'], 409);
   }
 
-  const created = await Product.create(data);
+  const created = await Product.create(data as any);
   const result = created.toJSON();
   result.created_at = formatDate(result.created_at);
   return result;
@@ -40,7 +40,7 @@ export const getProductById = async (id: string) => {
   return data;
 };
 
-export const updateProduct = async (id: string, data: any) => {
+export const updateProduct = async (id: string, data: ProductType) => {
   const validationErrors = validatePartialProductData(data);
   if (validationErrors.length > 0) {
     throw new AppError(validationErrors, 400);
