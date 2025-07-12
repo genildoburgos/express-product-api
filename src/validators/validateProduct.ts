@@ -1,4 +1,4 @@
-import { ProductType } from '../utils/dateFormatter';
+import { ProductType } from '../utils/productTypeInterface';
 
 export function validateProductData(data: ProductType) {
   const errors: string[] = [];

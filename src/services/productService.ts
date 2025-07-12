@@ -1,6 +1,7 @@
 import Product from '../models/productModel';
 import { AppError } from '../errors/appError';
-import { formatDate, ProductType } from '../utils/dateFormatter';
+import { formatDate } from '../utils/dateFormatter';
+import { ProductType } from '../utils/productTypeInterface';
 import { validateProductData } from '../validators/validateProduct';
 import { validatePartialProductData } from '../validators/validatePartialProduct';
 
