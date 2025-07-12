@@ -28,8 +28,8 @@ Crie um arquivo `.env` na raiz do projeto e preencha as variáveis necessárias 
 No terminal, execute:
 
 ```bash
-"docker compose up --build"
-
+docker compose up --build
+```
 
 ### ✅ 4. Verificação
 
