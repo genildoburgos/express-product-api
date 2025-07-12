@@ -10,6 +10,10 @@ export const createProduct = async (data: ProductType) => {
     throw new AppError(validationErrors, 400);
   }
 
+  if (!data || Object.keys(data).length === 0) {
+    throw new AppError(['data is required'], 400);
+  }
+
   const existing = await Product.findOne({ where: { name: data.name } });
   if (existing) {
     throw new AppError(['name already registered'], 409);
@@ -41,6 +45,10 @@ export const updateProduct = async (id: string, data: ProductType) => {
   const validationErrors = validatePartialProductData(data);
   if (validationErrors.length > 0) {
     throw new AppError(validationErrors, 400);
+  }
+
+  if (!data || Object.keys(data).length === 0) {
+    throw new AppError(['data is required'], 400);
   }
 
   const [updated] = await Product.update(data, { where: { id } });
