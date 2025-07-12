@@ -52,9 +52,11 @@ export const updateProduct = async (id: string, data: ProductType) => {
     throw new AppError(['product not found'], 404);
   }
 
-  const existing = await Product.findOne({ where: { name: data.name } });
-  if (existing) {
-    throw new AppError(['name already registered'], 409);
+  if(data.name){
+    const existing = await Product.findOne({ where: { name: data.name } });
+    if (existing) {
+      throw new AppError(['name already registered'], 409);
+    }
   }
 
   const updatedProduct = await Product.findByPk(id);
