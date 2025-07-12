@@ -46,8 +46,8 @@ export const updateProduct = async (
   next: NextFunction,
 ) => {
   try {
-    const result = await ProductService.updateProduct(req.params.id, req.body);
-    res.json(result);
+    await ProductService.updateProduct(req.params.id, req.body);
+    res.status(204).send();
   } catch (error) {
     next(error);
   }
