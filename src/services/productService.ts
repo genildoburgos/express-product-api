@@ -34,7 +34,6 @@ export const getProductById = async (id: string) => {
     throw new AppError(['product not found'], 404);
   }
   const data = product.toJSON();
-  data.created_at = formatDate(data.created_at);
   return data;
 };
 
