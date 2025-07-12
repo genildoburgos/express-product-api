@@ -57,6 +57,9 @@ A API de gerenciamento de produtos está disponível sob o prefixo /api/products
     }
 
     Resposta de Sucesso: 201 Created com os detalhes do produto criado.
+    Resposta de Erro: 409 "name already registered". Se já existir um produto cadastrado com a mesmo nome que está sendo enviado
+    Resposta de Erro: 400 "bad request". Retornar o status code 400 e um objeto com a propriedade errors contendo um array com suas respectivas mensagens de validação de acordo com cada campo:
+    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
 
 # GET /api/products
 
@@ -64,7 +67,10 @@ A API de gerenciamento de produtos está disponível sob o prefixo /api/products
 
     Método: GET
 
-    Resposta de Sucesso: 200 OK com um array de objetos de produtos.
+    Resposta de Sucesso: 200 "OK" com um array de objetos de produtos.
+
+    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+
 
 # GET /api/products/:id
 
@@ -74,9 +80,11 @@ A API de gerenciamento de produtos está disponível sob o prefixo /api/products
 
     Exemplo de URL: /api/products/123e4567-e89b-12d3-a456-426614174000 (substitua pelo ID real do produto)
 
-    Resposta de Sucesso: 200 OK com o objeto do produto.
+    Resposta de Sucesso: 201 "Created" com o objeto do produto.
 
-    Resposta de Erro: 404 Not Found se o produto não existir.
+    Resposta de Erro: 404 "product not found" se o produto não existir.
+    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+
 
 # PUT /api/products/:id
 
@@ -84,19 +92,23 @@ A API de gerenciamento de produtos está disponível sob o prefixo /api/products
 
     Método: PUT
 
-    Exemplo de URL: /api/products/123e4567-e89b-12d3-a456-426614174000
+    Exemplo de URL: /api/products/1
 
     Corpo da Requisição (Exemplo JSON - envie apenas os campos a serem atualizados):
     JSON
 
     {
-        "price": 34.99,
-        "stock": 140
+        "price": 49.90,
+        "quantity": 25
     }
 
-    Resposta de Sucesso: 200 OK com os detalhes atualizados do produto.
+    Resposta de Sucesso: 204 OK sem nenhum conteúdo.
 
-    Resposta de Erro: 404 Not Found se o produto não existir.
+    Resposta de Erro: 404 "product not found". Se o produto não existir.
+    Resposta de Erro: 409 "name already registered". Se já existir um produto cadastrado com a mesmo nome que está sendo enviado.
+    Resposta de Erro: 400 "bad request". Retornar o status code 400 e um objeto com a propriedade errors contendo um array com suas respectivas mensagens de validação de acordo com cada campo.
+    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+
 
 # DELETE /api/products/:id
 
@@ -104,8 +116,9 @@ A API de gerenciamento de produtos está disponível sob o prefixo /api/products
 
     Método: DELETE
 
-    Exemplo de URL: /api/products/123e4567-e89b-12d3-a456-426614174000
+    Exemplo de URL: /api/products/1
 
     Resposta de Sucesso: 204 No Content (indica que a requisição foi bem-sucedida e não há conteúdo para retornar).
 
-    Resposta de Erro: 404 Not Found se o produto não existir.
+    Resposta de Erro: 404 "product not found" se o produto não existir.
+    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
