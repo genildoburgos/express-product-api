@@ -1,65 +1,64 @@
 # 📦 ANJUN25_D01_COMPASSPRODUCT
 
-API Node.js com TypeScript para gerenciamento de produtos.  
-Utiliza Express, Sequelize e PostgreSQL, totalmente configurada para rodar com Docker.
+Node.js API with TypeScript for product management.
+It uses Express, Sequelize, and PostgreSQL, fully configured to run with Docker.
 
 ---
 
-## 🐳 Como executar usando Docker
+## 🐳 How to Run Using Docker
 
-Este projeto já vem com tudo configurado para subir os containers da aplicação e do banco de dados.
-
----
-
-### ✅ 1. Pré-requisitos
-
-- [Docker](https://www.docker.com/) instalado
-- [Docker Compose](https://docs.docker.com/compose/) instalado
+This project comes fully set up to launch the application and database containers.
 
 ---
 
-### ⚙️ 2. Configuração de Variáveis de Ambiente
+### ✅ 1. Prerequisites
 
-Crie um arquivo `.env` na raiz do projeto e preencha as variáveis necessárias para a conexão com o banco de dados e outras configurações.
+- [Docker](https://www.docker.com/) installed
+- [Docker Compose](https://docs.docker.com/compose/) installed
 
+---
 
-### ▶️ 3. Build da imagem da aplicação
+### ⚙️ 2. Environment Variable Configuration
 
-No terminal, execute:
+Create a .env file in the project root and fill in the required variables for database connection and other settings.
+
+### ▶️ 3. Build the Application Image
+
+In the terminal, run:
 
 ```bash
 docker compose up --build
 ```
 
-### ✅ 4. Verificação
+### ✅ 4. Verification
 
-Após a execução, a API estará disponível em `http://localhost:3000`. Você pode verificar o status dos containers com `docker compose ps`.
+After execution, the API will be available at http://localhost:3000.
+You can check the status of the containers with docker ps.
 
 
-## Endpoints da API
+## API Endpoints
 
-A API de gerenciamento de produtos está disponível sob o prefixo /api/products e oferece os seguintes endpoints principais:
+The product management API is available under the /api/products prefix and offers the following main endpoints:
 
 # POST /api/products
 
-        Função: Cria um novo produto no sistema.
+        FPurpose: Creates a new product in the system.
 
-        Método: POST
+        Method: POST
 
-        Corpo da Requisição (Exemplo JSON):
-        JSON
-
+        Request Body (Example JSON):
     {
-        "name": "Nome do Produto Exemplo",
-        "description": "Uma breve descrição do produto.",
+        "name": "Example Product Name",
+        "description": "A brief description of the product.",
         "price": 29.99,
-        "stock": 150
+        "quantity": 150
     }
 
-    Resposta de Sucesso: 201 Created com os detalhes do produto criado.
-    Resposta de Erro: 409 "name already registered". Se já existir um produto cadastrado com a mesmo nome que está sendo enviado
-    Resposta de Erro: 400 "bad request". Retornar o status code 400 e um objeto com a propriedade errors contendo um array com suas respectivas mensagens de validação de acordo com cada campo:
-    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+
+    Success Response: 201 Created with the details of the created product.
+    Error Response: 409 "name already registered" if a product with the same name already exists.
+    Error Response: 400 "bad request" returns status code 400 and an object with the errors property containing an array with validation messages for each field.
+    Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
 
 # GET /api/products
 
@@ -74,51 +73,47 @@ A API de gerenciamento de produtos está disponível sob o prefixo /api/products
 
 # GET /api/products/:id
 
-    Função: Busca e retorna os detalhes de um produto específico pelo seu identificador (id).
+    Purpose: Returns a list of all registered products.
 
-    Método: GET
+    Method: GET
 
-    Exemplo de URL: /api/products/123e4567-e89b-12d3-a456-426614174000 (substitua pelo ID real do produto)
-
-    Resposta de Sucesso: 201 "Created" com o objeto do produto.
-
-    Resposta de Erro: 404 "product not found" se o produto não existir.
-    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+    Success Response: 200 OK with an array of product objects.
+    
+    Error Response: 404 "product not found" if the product does not exist.
+    Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
 
 
 # PUT /api/products/:id
 
-    Função: Atualiza as informações de um produto existente, identificado pelo seu id.
+    Purpose: Updates information of an existing product identified by its id.
 
-    Método: PUT
+    Method: PUT
 
-    Exemplo de URL: /api/products/1
+    Example URL: /api/products/1
 
-    Corpo da Requisição (Exemplo JSON - envie apenas os campos a serem atualizados):
-    JSON
+    Request Body (Example JSON – send only the fields you want to update):
 
     {
         "price": 49.90,
         "quantity": 25
     }
 
-    Resposta de Sucesso: 204 OK sem nenhum conteúdo.
+    Success Response: 204 OK with no content.
 
-    Resposta de Erro: 404 "product not found". Se o produto não existir.
-    Resposta de Erro: 409 "name already registered". Se já existir um produto cadastrado com a mesmo nome que está sendo enviado.
-    Resposta de Erro: 400 "bad request". Retornar o status code 400 e um objeto com a propriedade errors contendo um array com suas respectivas mensagens de validação de acordo com cada campo.
-    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+    Error Response: 404 "product not found" if the product does not exist.
+    Error Response: 409 "name already registered" if a product with the same name already exists.
+    Error Response: 400 "bad request" returns status code 400 and an object with the errors property containing an array with validation messages for each field.
+    Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
 
 
 # DELETE /api/products/:id
 
-    Função: Exclui um produto do sistema, utilizando seu id como referência.
+    Purpose: Deletes a product from the system using its id as reference.
 
-    Método: DELETE
+    Method: DELETE
 
-    Exemplo de URL: /api/products/1
+    Example URL: /api/products/1
 
-    Resposta de Sucesso: 204 No Content (indica que a requisição foi bem-sucedida e não há conteúdo para retornar).
-
-    Resposta de Erro: 404 "product not found" se o produto não existir.
-    Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
+    Success Response: 204 No Content (indicates the request was successful and there is no content to return).
+    Error Response: 404 "product not found" if the product does not exist.
+    Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
