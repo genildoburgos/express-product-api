@@ -1,6 +1,5 @@
 import Product from '../models/productModel';
 import { AppError } from '../errors/appError';
-import { formatDate } from '../utils/dateFormatter';
 import { ProductType } from '../utils/productTypeInterface';
 import { validateProductData } from '../validators/validateProduct';
 import { validatePartialProductData } from '../validators/validatePartialProduct';
@@ -18,7 +17,6 @@ export const createProduct = async (data: ProductType) => {
 
   const created = await Product.create(data as any);
   const result = created.toJSON();
-  result.created_at = formatDate(result.created_at);
   return result;
 };
 
@@ -26,7 +24,6 @@ export const getAllProducts = async () => {
   const products = await Product.findAll();
   return products.map((p) => {
     const data = p.toJSON();
-    data.created_at = formatDate(data.created_at);
     return data;
   });
 };
@@ -65,7 +62,6 @@ export const updateProduct = async (id: string, data: ProductType) => {
   }
 
   const result = updatedProduct.toJSON();
-  result.updated_at = formatDate(result.updated_at);
   return result;
 };
 
