@@ -35,6 +35,21 @@ docker compose up --build
 After execution, the API will be available at http://localhost:3000.
 You can check the status of the containers with docker ps.
 
+### 💼 5. Postman Collection
+
+To help you test and explore the API endpoints easily, this project includes a Postman collection file:
+
+- **File:** `Compass.postman_collection.json`
+
+#### How to Use
+
+1. Open Postman.
+2. In the top menu, click **Import**.
+3. Select the `Compass.postman_collection.json` file from the project root.
+4. After importing, you will see all the predefined requests organized by endpoint.
+
+You can then run requests against `http://localhost:3000` and verify the expected responses.
+
 ## API Endpoints
 
 The product management API is available under the /api/products prefix and offers the following main endpoints:
