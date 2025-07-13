@@ -35,7 +35,6 @@ docker compose up --build
 After execution, the API will be available at http://localhost:3000.
 You can check the status of the containers with docker ps.
 
-
 ## API Endpoints
 
 The product management API is available under the /api/products prefix and offers the following main endpoints:
@@ -70,7 +69,6 @@ The product management API is available under the /api/products prefix and offer
 
     Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
 
-
 # GET /api/products/:id
 
     Purpose: Returns a list of all registered products.
@@ -78,10 +76,9 @@ The product management API is available under the /api/products prefix and offer
     Method: GET
 
     Success Response: 200 OK with an array of product objects.
-    
+
     Error Response: 404 "product not found" if the product does not exist.
     Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
-
 
 # PUT /api/products/:id
 
@@ -104,7 +101,6 @@ The product management API is available under the /api/products prefix and offer
     Error Response: 409 "name already registered" if a product with the same name already exists.
     Error Response: 400 "bad request" returns status code 400 and an object with the errors property containing an array with validation messages for each field.
     Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
-
 
 # DELETE /api/products/:id
 
