@@ -1,6 +1,6 @@
-import { ProductType } from '../utils/productTypeInterface';
+import { ProductTypePayload } from '../utils/productTypeInterface';
 
-export function validateProductData(data: ProductType) {
+export function validateProductData(data: ProductTypePayload) {
   const errors: string[] = [];
 
   if (typeof data.name !== 'string') {

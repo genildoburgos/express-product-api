@@ -1,8 +1,7 @@
-import { ProductType } from '../utils/productTypeInterface';
+import { ProductTypePayload, ProductTypeResponse } from '../utils/productTypeInterface';
 
-export function validatePartialProductData(data: ProductType) {
+export function validatePartialProductData(data: ProductTypePayload): string[] {
   const errors: string[] = [];
-
   if ('name' in data && typeof data.name !== 'string') {
     errors.push('name not is string');
   }
