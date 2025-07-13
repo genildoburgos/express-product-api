@@ -3,20 +3,17 @@
 Node.js API with TypeScript for product management.
 It uses Express, Sequelize, and PostgreSQL, fully configured to run with Docker.
 
----
 
 ## 🐳 How to Run Using Docker
 
 This project comes fully set up to launch the application and database containers.
 
----
 
 ### ✅ 1. Prerequisites
 
 - [Docker](https://www.docker.com/) installed
 - [Docker Compose](https://docs.docker.com/compose/) installed
 
----
 
 ### ⚙️ 2. Environment Variable Configuration
 
@@ -50,11 +47,11 @@ To help you test and explore the API endpoints easily, this project includes a P
 
 You can then run requests against `http://localhost:3000` and verify the expected responses.
 
-## API Endpoints
+### API Endpoints
 
 The product management API is available under the /api/products prefix and offers the following main endpoints:
 
-### POST /api/products
+#### POST /api/products
 
         FPurpose: Creates a new product in the system.
 
@@ -74,7 +71,7 @@ The product management API is available under the /api/products prefix and offer
     Error Response: 400 "bad request" returns status code 400 and an object with the errors property containing an array with validation messages for each field.
     Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
 
-### GET /api/products
+#### GET /api/products
 
     Função: Retorna uma lista de todos os produtos registrados.
 
@@ -84,7 +81,7 @@ The product management API is available under the /api/products prefix and offer
 
     Resposta de Erro: 500 "an internal server error occurred". Caso aconteça algum outro erro que não foi mapeado neste projeto.
 
-### GET /api/products/:id
+#### GET /api/products/:id
 
     Purpose: Returns a list of all registered products.
 
@@ -95,7 +92,7 @@ The product management API is available under the /api/products prefix and offer
     Error Response: 404 "product not found" if the product does not exist.
     Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
 
-### PUT /api/products/:id
+#### PUT /api/products/:id
 
     Purpose: Updates information of an existing product identified by its id.
 
@@ -117,7 +114,7 @@ The product management API is available under the /api/products prefix and offer
     Error Response: 400 "bad request" returns status code 400 and an object with the errors property containing an array with validation messages for each field.
     Error Response: 500 "an internal server error occurred" if any other unhandled error occurs.
 
-### DELETE /api/products/:id
+#### DELETE /api/products/:id
 
     Purpose: Deletes a product from the system using its id as reference.
 
