@@ -12,9 +12,12 @@ services:
       - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-private-network
 
   app:
     build: .
+    restart: always
     ports:
       - '3000:3000'
     environment:
@@ -26,6 +29,13 @@ services:
       PORT: 3000
     depends_on:
       - db
+    networks:
+      - app-private-network
 
 volumes:
   pgdata:
+
+networks:
+  app-private-network:
+    driver: bridge
+    name: app-private-network
