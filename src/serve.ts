@@ -1,21 +1,22 @@
 import app from './app';
 import sequelize from './config/db';
+import logger from './logger';
 
 const PORT = process.env.PORT || 3000;
 
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log('PostgreSQL connected');
+    logger.info('PostgreSQL connected');
 
     await sequelize.sync(); // Cria tabelas
-    console.log('Tables synchronized');
+    logger.info('Tables synchronized');
 
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      logger.info(`Server running on port ${PORT}`);
     });
-  } catch (error) {
-    console.error('Error starting server:', error);
+  } catch (error: any) {
+    logger.error('Error starting server:', error);
     process.exit(1);
   }
 })();
