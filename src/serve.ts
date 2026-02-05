@@ -1,8 +1,9 @@
+import env from './config/env';
 import app from './app';
 import sequelize from './config/db';
 import logger from './logger';
 
-const PORT = process.env.PORT || 3000;
+const PORT = env.PORT || 3000;
 
 (async () => {
   try {
@@ -13,7 +14,7 @@ const PORT = process.env.PORT || 3000;
     logger.info('Tables synchronized');
 
     app.listen(PORT, () => {
-      logger.info(`Server running on port ${PORT}`);
+      logger.info(`Server running on ${env.HOST}:${env.PORT}`);
     });
   } catch (error: any) {
     logger.error('Error starting server:', error);
