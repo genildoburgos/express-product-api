@@ -16,8 +16,8 @@ const PORT = env.PORT || 3000;
     app.listen(PORT, () => {
       logger.info(`Server running on ${env.HOST}:${env.PORT}`);
     });
-  } catch (error: any) {
-    logger.error('Error starting server:', error);
+  } catch (error: unknown) {
+    logger.error({ err: error }, 'Error starting server');
     process.exit(1);
   }
 })();
