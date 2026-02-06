@@ -1,11 +1,11 @@
 import Product from '../models/productModel';
-import { AppError } from '../errors/appError';
+import { AppError } from '../../errors/appError';
 import {
   ProductTypePayload,
   ProductTypeResponse,
-} from '../utils/productTypeInterface';
-import { validateProductData } from '../validators/validateProduct';
-import { validatePartialProductData } from '../validators/validatePartialProduct';
+} from '../../utils/productTypeInterface';
+import { validateProductData } from '../../validators/validateProduct';
+import { validatePartialProductData } from '../../validators/validatePartialProduct';
 
 export const createProduct = async (data: ProductTypePayload) => {
   const validationErrors = validateProductData(data);
@@ -38,7 +38,7 @@ export const createProduct = async (data: ProductTypePayload) => {
 
 export const getAllProducts = async () => {
   const products = await Product.findAll();
-  return products.map((p) => {
+  return products.map((p: any) => {
     const data = p.toJSON();
     data.price = Number(data.price);
     data.quantity = Number(data.quantity);
